@@ -1,0 +1,49 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Top Headlines</h1>
+            <nav>
+                <a href="{{ url_for('news.home') }}">Home</a>
+                <a href="{{ url_for('news.category_news', query='business') }}">Business</a>
+                <a href="{{ url_for('news.category_news', query='technology') }}">Technology</a>
+                <a href="{{ url_for('news.category_news', query='sports') }}">Sports</a>
+                <a href="{{ url_for('news.category_news', query='entertainment') }}">Entertainment</a>
+            </nav>
+            <form action="{{ url_for('news.home') }}" method="get" class="country-select">
+                <label for="country">Select Country:</label>
+                <select name="country" id="country" onchange="this.form.submit()">
+                    <option value="us" {% if selected_country == 'us' %}selected{% endif %}>USA</option>
+                    <option value="in" {% if selected_country == 'in' %}selected{% endif %}>India</option>
+                    <option value="gb" {% if selected_country == 'gb' %}selected{% endif %}>UK</option>
+                    <option value="au" {% if selected_country == 'au' %}selected{% endif %}>Australia</option>
+                </select>
+            </form>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="news-section">
+            {% for article in news %}
+            <article class="news-item">
+                <img src="{{ article['urlToImage'] }}" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <h2>{{ article['title'] }}</h2>
+                    <p>{{ article['description'] }}</p>
+                    <a href="{{ article['url'] }}" target="_blank" class="read-more">Read More</a>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
