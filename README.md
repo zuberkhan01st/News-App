@@ -24,3 +24,32 @@ To run this project locally, you need to have Python installed. You can install 
 ```bash
 git clone https://github.com/your-username/news-app.git
 cd news-app
+```
+2. **Set up the virtual environment:**
+```bash
+python -m venv venv
+```
+3. **Activate the virtual environment:**
+```bash
+venv\Scripts\activate
+
+```
+4. **pip install -r requirements.txt**
+:
+**
+```bash
+pip install -r requirements.txt
+
+```
+5. **Set up the environment variables:
+**
+```bash
+NEWS_API_KEY=your_api_key_here
+
+```
+
+6. ** Run the Flask app:**
+   ```bash
+   python app.py
+   ```
+
