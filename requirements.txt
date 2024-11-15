@@ -4,3 +4,4 @@ bcrypt
 requests
 dnspython
 python-dotenv
+gunicorn
